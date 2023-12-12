@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class NotifierAspect {
 
     @Pointcut(value = "execution(* sk.fiit.*.notify(..))")
-    public void editNotifyMessage() {}
+    public void messageNotify() {}
 
-    @Around(value = "editNotifyMessage()", argNames = "pjp")
-    public Object logBeforeAndAfter(ProceedingJoinPoint pjp) throws Throwable {
+    @Around(value = "messageNotify()", argNames = "pjp")
+    public Object specifyServis(ProceedingJoinPoint pjp) throws Throwable {
         String originalMessage = (String) pjp.getArgs()[0];
 
         String notifierType = null;
